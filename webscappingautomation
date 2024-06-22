@@ -1,0 +1,40 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Initialize the WebDriver
+driver = webdriver.Chrome()
+
+# Open Google homepage
+driver.get("http://google.com/")
+
+# Maximize the browser window
+driver.maximize_window()
+
+# Find the search input field and send keys for "LinkedIn Login"
+search_input = driver.find_element_by_name("q")
+search_input.send_keys("LinkedIn Login")
+search_input.send_keys(Keys.ENTER)
+
+# Wait for a brief moment for the page to load (you can also use explicit waits here)
+time.sleep(2)
+
+# Click on the link containing 'login'
+driver.find_element_by_partial_link_text("login").click()
+
+# Fill in the username and password fields
+driver.find_element_by_id('username').send_keys("Username Written")
+driver.find_element_by_id('password').send_keys("Password")
+
+# Click on the login button
+driver.find_element_by_tag_name("button").click()
+
+# Wait for 20 seconds (You may adjust this as needed)
+time.sleep(20)
+
+# Print the title and current URL of the page
+print(driver.title)
+print(driver.current_url)
+
+# Close the browser
+driver.close()

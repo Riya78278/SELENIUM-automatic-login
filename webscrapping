@@ -1,0 +1,24 @@
+from selenium import webdriver
+from time import sleep
+from selenium.webdriver.common.by import By
+username="riyamondaluser@gmail.com"
+password="1234riya@1234"
+url="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Den-GB&ec=GAlA8wE&hl=en-GB&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S-1643654106%3A1717439668924910&ddm=0"
+driver=webdriver.Chrome()
+driver.get(url)
+driver.maximize_window()
+driver.find_element(By.ID,"identifierId").send_keys(username)
+sleep(3)
+driver.find_element(By.ID,"identifierNext").click()
+sleep(2)
+driver.find_element(By.NAME,"Passwd").send_keys(password)
+sleep(2)
+driver.find_element(By.ID,"passwordNext").click()
+sleep(10)
+history="https://myaccount.google.com/u/1/?hl=en&utm_source=OGB&utm_medium=act"
+driver.get(history)
+sleep(10)
+personalinfo="https://myaccount.google.com/u/1/personal-info?hl=en&utm_source=OGB&utm_medium=act"
+driver.get(personalinfo)
+sleep(5)
+print("loggedin is successful")
